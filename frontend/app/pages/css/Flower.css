@@ -1,0 +1,58 @@
+/* HERO */
+.page-hero {
+  padding: 60px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--dark), #2d1f14);
+  color: var(--cream);
+}
+
+.section-eyebrow {
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.page-hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.page-hero p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* FILTER BUTTONS */
+.cat-pills {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.cat-pill {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  background: white;
+}
+
+.cat-pill.active {
+  background: var(--rose);
+  color: white;
+}
+
+/* GRID */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* CARD */
+.card {
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+}

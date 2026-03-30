@@ -1,0 +1,278 @@
+/* ================================================================
+   LULE SHQIP — Global Stylesheet
+   Perdoret nga te gjitha faqet
+================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --cream:       #f9f4ef;
+  --dark:        #1a1410;
+  --rose:        #c8614a;
+  --rose-light:  #e8927a;
+  --rose-pale:   rgba(200,97,74,.08);
+  --sage:        #7a9e7e;
+  --sage-light:  #a8c5aa;
+  --gold:        #c9a96e;
+  --muted:       #8a7e76;
+  --card:        #ffffff;
+  --border:      rgba(26,20,16,.1);
+  --shadow:      0 4px 32px rgba(26,20,16,.08);
+  --shadow-lg:   0 16px 48px rgba(26,20,16,.14);
+  --radius:      16px;
+  --radius-sm:   10px;
+  --radius-pill: 100px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.1;
+}
+.serif { font-family: 'Cormorant Garamond', serif; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(249,244,239,.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--dark); text-decoration: none; letter-spacing: .02em;
+}
+.nav-logo span { color: var(--rose); }
+.nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--muted);
+  text-decoration: none; transition: color .2s; padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--dark); border-bottom-color: var(--rose); }
+.nav-actions { display: flex; gap: 10px; align-items: center; }
+
+/* ── DROPDOWN ── */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a::after { content: ' ▾'; font-size: 10px; }
+.dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 0;
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+  min-width: 180px; padding: 8px 0; z-index: 300;
+}
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu a {
+  display: block; padding: 10px 18px;
+  font-size: 13px; color: var(--dark);
+  text-decoration: none; text-transform: none;
+  letter-spacing: 0; border-bottom: none;
+  transition: background .15s;
+}
+.dropdown-menu a:hover { background: var(--cream); color: var(--rose); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 22px; border-radius: var(--radius-pill);
+  font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+  letter-spacing: .03em; cursor: pointer; transition: all .22s;
+  text-decoration: none; border: none;
+}
+.btn-primary { background: var(--rose); color: white; }
+.btn-primary:hover { background: var(--rose-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,97,74,.3); }
+.btn-dark { background: var(--dark); color: var(--cream); }
+.btn-dark:hover { background: #2d2016; transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--dark); border: 1.5px solid var(--border); }
+.btn-ghost:hover { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+.btn-sage { background: var(--sage); color: white; }
+.btn-sage:hover { background: var(--sage-light); }
+.btn-lg { padding: 13px 36px; font-size: 15px; }
+.btn-sm { padding: 6px 14px; font-size: 12px; }
+.btn-icon {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; padding: 0;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--card); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.card-padded { padding: 28px; }
+
+/* ── PRODUCT CARD ── */
+.product-card {
+  background: var(--card); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  overflow: hidden; cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.product-img {
+  height: 210px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg,var(--cream) 0%,#ede5dc 100%);
+  font-size: 80px; position: relative; overflow: hidden;
+}
+.product-img img { width:100%; height:100%; object-fit:cover; }
+.product-badge {
+  position: absolute; top:12px; left:12px;
+  background: var(--rose); color: white;
+  font-size: 10px; font-weight: 600; padding: 3px 10px;
+  border-radius: var(--radius-pill); letter-spacing: .08em; text-transform: uppercase;
+}
+.product-body { padding: 18px 20px 20px; }
+.product-cat { font-size: 10px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 5px; }
+.product-name { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:400; color:var(--dark); margin-bottom:4px; line-height:1.2; }
+.product-shop { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; }
+.product-price { font-size: 19px; font-weight: 500; }
+.product-price small { font-size: 12px; color: var(--muted); font-weight: 400; }
+
+/* ── FORMS ── */
+.form-group { margin-bottom: 18px; }
+.form-label {
+  display: block; font-size: 11px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 7px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 11px 15px;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--dark);
+  background: white; outline: none; transition: border-color .2s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--rose); }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-file {
+  width: 100%; padding: 20px; border: 2px dashed var(--border);
+  border-radius: var(--radius-sm); text-align: center;
+  cursor: pointer; transition: border-color .2s; background: var(--cream);
+}
+.form-file:hover { border-color: var(--rose); }
+.form-file input { display: none; }
+.form-hint { font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+/* ── GRID LAYOUTS ── */
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+
+/* ── SECTIONS ── */
+.section { padding: 80px 72px; }
+.section-sm { padding: 48px 72px; }
+.section-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:40px; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; color:var(--dark); }
+.section-eyebrow {
+  font-size: 11px; font-weight:500; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--rose); margin-bottom:12px;
+}
+.section-link { font-size:13px; color:var(--rose); text-decoration:underline; text-underline-offset:3px; }
+
+/* ── PAGE WRAPPER ── */
+.page-wrap { padding-top: 64px; }
+
+/* ── CATEGORY PILLS ── */
+.cat-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+.cat-pill {
+  padding: 7px 20px; border-radius: var(--radius-pill); font-size: 13px;
+  border: 1.5px solid var(--border); cursor: pointer; transition: all .2s;
+  background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif;
+}
+.cat-pill:hover, .cat-pill.active { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+
+/* ── STATUS PILLS ── */
+.status { font-size: 11px; font-weight: 600; padding: 3px 11px; border-radius: var(--radius-pill); }
+.status-pending   { background: rgba(201,169,110,.15); color: #9a7340; }
+.status-confirmed { background: rgba(122,158,126,.15); color: #3d6b45; }
+.status-preparing { background: rgba(100,130,200,.15); color: #3a5a9a; }
+.status-ready     { background: rgba(200,97,74,.15);   color: var(--rose); }
+.status-delivered { background: rgba(122,158,126,.25); color: #2d5535; }
+.status-cancelled { background: rgba(200,50,50,.1);    color: #a03030; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: var(--dark); color: var(--cream);
+  padding: 13px 22px; border-radius: var(--radius-sm);
+  font-size: 14px; box-shadow: 0 8px 32px rgba(0,0,0,.25);
+  transform: translateY(80px); opacity: 0;
+  transition: all .3s; pointer-events: none; max-width: 320px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: linear-gradient(135deg, var(--dark) 0%, #2d1f14 100%);
+  padding: 80px 72px; color: var(--cream);
+}
+.page-hero h1 { font-size: clamp(38px,5vw,60px); color: var(--cream); margin-bottom: 12px; }
+.page-hero h1 em { color: var(--gold); font-style: italic; }
+.page-hero p { font-size: 15px; color: rgba(249,244,239,.55); max-width: 500px; }
+
+/* ── TABLE ── */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  text-align: left; font-size: 10px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+  padding: 0 0 12px; border-bottom: 1px solid var(--border);
+}
+.data-table td { padding: 13px 0; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover td { background: var(--cream); }
+
+/* ── LIVE BADGE ── */
+.live-badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; color:var(--sage); }
+.live-dot { width:7px; height:7px; border-radius:50%; background:var(--sage); animation: blink 1.6s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); color: rgba(249,244,239,.5);
+  padding: 48px 72px; font-size: 13px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+footer .footer-logo { font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--cream); margin-bottom:8px; }
+footer a { color: rgba(249,244,239,.5); text-decoration:none; }
+footer a:hover { color: var(--cream); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.fade-up { animation: fadeUp .45s ease both; }
+.delay-1 { animation-delay: .1s; }
+.delay-2 { animation-delay: .2s; }
+.delay-3 { animation-delay: .3s; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px) {
+  .grid-4 { grid-template-columns: repeat(2,1fr); }
+  .grid-3 { grid-template-columns: repeat(2,1fr); }
+  .section, .section-sm, .page-hero { padding-left:24px; padding-right:24px; }
+  .navbar { padding: 0 20px; }
+  .nav-links { display: none; }
+}
+@media(max-width:600px) {
+  .grid-4,.grid-3,.grid-2 { grid-template-columns: 1fr; }
+}
