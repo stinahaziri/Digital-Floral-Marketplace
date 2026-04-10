@@ -1,0 +1,91 @@
+
+<style>
+#e1 svg{width:100%}
+#e1 svg.erDiagram .row-rect-odd path,#e1 svg.erDiagram .row-rect-odd rect,
+#e1 svg.erDiagram .row-rect-even path,#e1 svg.erDiagram .row-rect-even rect{stroke:none!important}
+</style>
+<div style="font-family:var(--font-sans);font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">ERD — 10 Tabelat Mandatory</div>
+<div id="e1"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const dark=matchMedia('(prefers-color-scheme:dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({startOnLoad:false,theme:'base',fontFamily:'"Anthropic Sans",sans-serif',
+themeVariables:{darkMode:dark,fontSize:'11px',fontFamily:'"Anthropic Sans",sans-serif',
+lineColor:dark?'#9c9a92':'#73726c',textColor:dark?'#c2c0b6':'#3d3d3a'}});
+const {svg}=await mermaid.render('e1svg',`erDiagram
+Users{int id PK
+string first_name
+string last_name
+string email
+string password_hash
+bit is_active
+int created_by
+datetime created_at
+datetime updated_at}
+Roles{int id PK
+string name
+string description
+datetime created_at}
+UserRoles{int id PK
+int user_id FK
+int role_id FK
+datetime assigned_at}
+Permissions{int id PK
+string name
+string description}
+RolePermissions{int id PK
+int role_id FK
+int permission_id FK}
+RefreshTokens{int id PK
+int user_id FK
+string token_hash
+datetime expires_at
+datetime revoked_at}
+AuditLogs{int id PK
+int user_id FK
+string action
+string entity
+string old_value
+string new_value
+string ip_address
+datetime created_at}
+Notifications{int id PK
+int user_id FK
+string type
+string title
+string message
+bit is_read
+datetime created_at}
+Settings{int id PK
+string key
+string value
+string description
+datetime updated_at}
+Files{int id PK
+string entity
+int entity_id
+string filename
+string file_path
+int uploaded_by FK
+datetime created_at}
+Users||--o{UserRoles:has
+Roles||--o{UserRoles:assigned
+Roles||--o{RolePermissions:has
+Permissions||--o{RolePermissions:granted
+Users||--o{RefreshTokens:owns
+Users||--o{AuditLogs:triggers
+Users||--o{Notifications:receives
+Users||--o{Files:uploads`);
+document.getElementById('e1').innerHTML=svg;
+document.querySelectorAll('#e1 svg.erDiagram .node').forEach(n=>{
+const fp=n.querySelector('path[d]');if(!fp)return;
+const nums=fp.getAttribute('d').match(/-?[\d.]+/g)?.map(Number);
+if(!nums||nums.length<8)return;
+const xs=[nums[0],nums[2],nums[4],nums[6]],ys=[nums[1],nums[3],nums[5],nums[7]];
+const x=Math.min(...xs),y=Math.min(...ys),w=Math.max(...xs)-x,h=Math.max(...ys)-y;
+const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);r.setAttribute('rx','8');
+for(const a of['fill','stroke','stroke-width','class','style'])if(fp.hasAttribute(a))r.setAttribute(a,fp.getAttribute(a));
+fp.replaceWith(r);});
+</script>
