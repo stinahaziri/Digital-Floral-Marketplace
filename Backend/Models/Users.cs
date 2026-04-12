@@ -23,7 +23,7 @@ namespace Backend.Models
         public int Created_by{get;set;}
         public 	DateTime? Created_at{get;set;}
         public DateTime? Updated_at{get;set;}
-    
+    public  required List<UserRoles>UserRoles {get;set;}
     }
 
  
